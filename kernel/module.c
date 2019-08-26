@@ -64,8 +64,10 @@
 
 /*
  * Modules' sections will be aligned on page boundaries
- * to ensure complete separation of code and data
+ * to ensure complete separation of code and data, but
+ * only when CONFIG_ARCH_HAS_STRICT_MODULE_RWX=y
  */
+#ifdef CONFIG_ARCH_HAS_STRICT_MODULE_RWX
 # define debug_align(X) ALIGN(X, PAGE_SIZE)
 
 /* If this is set, the section belongs in the init part of the module */
